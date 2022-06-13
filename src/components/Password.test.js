@@ -9,8 +9,8 @@
      it('sets the value', async() => {
          const wrapper = mount(Password)
          const input = wrapper.find('input')
-          await input.setValue('Abcd1234')
-         expect(input.element.value).toBe('Abcd1234')
+          await input.setValue('Abcd123456')
+         expect(input.element.value).toBe('Abcd123456')
       })
       it('renders an error if length is too short', () => {
         const wrapper = mount(Password, {
@@ -23,6 +23,6 @@
             }
           }
         })
-        expect(wrapper.html()).toContain('Password must be at least 10 characters')
+        expect(wrapper.html()).toContain('Password must be at least 10 characters.')
       })
 })
