@@ -1,26 +1,22 @@
-<script setup>
-import {ref, computed, watch} from 'vue'
+<script setup lang="ts">
+import {ref, computed} from 'vue'
 const password = ref('')
 const minLength = ref(10)
 const emit = defineEmits(['passwordSubmit'])
-const error =ref('') 
 
-const handleSubmit = computed(()=>{
+const handleSubmit = ()=>{
    emit('passwordSubmit',password.value)
-})
+}
 
-const handleLength = watch(()=>{
-    if (password.value.length < minLength.value) {
-       error.value=`Password must be at least ${minLength.value} characters.`       
-    }else{
-       error.value=``
-    }
+const error = computed(() => {
+    return password.value.length < minLength.value
+    ? `Password must be at least ${minLength.value} characters.` 
+    : ``
 })
 </script>
 <template>
     <input type="password" v-model="password" />
-    <!-- <button id="btn123" @click="handleSubmit" :disabled="password.length < minLength ">Submit</button> -->
-    <button id="btn123" @click="handleSubmit"  @change="handleLength">Submit</button>
+    <button id="btn123" @click="handleSubmit" >Submit</button>
     <label>{{ password }}</label>
     <br/> 
     <div v-if="error">{{ error }}</div>
