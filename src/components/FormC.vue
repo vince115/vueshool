@@ -1,5 +1,20 @@
 <script setup lang="ts">
 import {ref, reactive} from 'vue'
+interface Props {
+  email :string,
+  description:string,
+  city:string,
+  subscribe: boolean,
+  interval: string
+}
+
+withDefaults(defineProps<Props>(), {
+    email: '',
+    description: '',
+    city: '',
+    subscribe: false,
+    interval: ''
+})
 
 const form =ref({
     email: '',
