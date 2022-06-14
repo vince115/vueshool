@@ -3,16 +3,14 @@
  */
  import { describe, it, expect } from 'vitest'
  import { mount } from '@vue/test-utils'
- //import FormC from '../components/FormC.vue'
- import FormC from '../components/Counter.vue'
+ import FormC from '../components/FormC.vue'
+ //import FormC from '../components/Counter.vue'
 
  describe('FormC', () => {
   // it('is okay', async () => {
   //   const wrapper = mount(FormC, {})
-  //   await wrapper.find('input[type=email]').setValue(email)
-  //   //expect(1).toBe(1)
-  // })
-    it('submits a form',() => {
+  //   await wrapper.find('input[type=email]').setValue(email)  // })
+    it('submits a form' , () => {
       
         const wrapper = mount(FormC)
         // const email = 'name@mail.com'

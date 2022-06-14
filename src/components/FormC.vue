@@ -1,14 +1,5 @@
-<script setup>
-import {ref,reactive} from 'vue'
-
-//const formValue = ref([])
-// const form = reactive({
-//     email: '',
-//     description: '',
-//     city: '',
-//     subscribe: false,
-//     interval: ''
-// })
+<script setup lang="ts">
+import {ref, reactive} from 'vue'
 
 const form =ref({
     email: '',
@@ -18,12 +9,10 @@ const form =ref({
     interval: ''
 })
 
-
 const emit = defineEmits(['formSubmit'])
 const handleSubmit=()=>{
-     emit('formSubmit',form.value)
+     emit('formSubmit', form.value)
 }
-
 </script>
 <template>
   <form @submit.prevent="handleSubmit"  >
@@ -31,16 +20,16 @@ const handleSubmit=()=>{
     <br/>
     <textarea v-model="form.description"></textarea>
     <br/>
-    <select v-model="form.city">
-      <option value="new-york">New York</option>
+     <select @change="form.city = ($event.target as HTMLSelectElement).value" >
+      <option value="newyork">New York</option>
       <option value="moscow">Moscow</option>
     </select>
     <br/>
-    <input type="checkbox" v-model="form.subscribe" />
+    <input  v-model="form.subscribe" type="checkbox" />
     <br/>
-    <input type="radio" value="weekly" v-model="form.interval" />
-    <input type="radio" value="monthly" v-model="form.interval" />
-    <br/>
+    <input  v-model="form.interval" type="radio" value="weekly"/>
+    <input  v-model="form.interval" type="radio" value="monthly" />
+    <br/> 
     <button type="submit" >Submit</button>
   </form>
   {{form}}
