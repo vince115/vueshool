@@ -1,13 +1,13 @@
-<script setup>
-import {ref} from 'vue'
-// const show = ref({
-//         type: Boolean,
-//         default: true
-// })
-const show = ref(true)
-const greeting = ref('Hello')
+<script setup lang="ts">
+interface Props{
+    show: boolean,
+    greeting?: string
+}
+withDefaults(defineProps<Props>(), {
+    show: true,
+    greeting: 'Hello',
+}) 
 </script>
 <template>
-{{show}}
-    <div v-if="show">{{ greeting }}</div>
+    <div class="greeting" v-if="show">{{ greeting }}</div>
 </template>
